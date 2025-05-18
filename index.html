@@ -1,0 +1,192 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/rangeslider.css"/>
+		<link rel="icon" href="Favicon.png">
+		<title>The evolution of a crystal</title>
+
+		<script src="scripts/jquery-3.1.1.min.js"></script>
+		<script src="scripts/jscolor.min.js"></script>
+		<script src="scripts/rangeslider.min.js"></script>
+		<script src="scripts/src.js"></script>
+
+		<script type=>
+			$(document).on('input', 'input[type="range"]', function(e) {
+				stepSpeed = logslider(e.currentTarget.value);
+				intervalCont();
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div id="header">
+
+			<div class="center_container">
+				<h3>The evolution of a crystal</h3>
+				<p>
+					Based on an opensource github project: <a href="https://arunarjunakani.github.io/HexagonalGameOfLife/">HexagonalGameOfLife</a>
+				</p>
+			</div>
+
+		</div>
+
+		<div class="center_container" id="body_container">
+
+			<div id="window_container">
+
+				<div id="window">
+					<canvas id="board" width="600" height="600"></canvas>
+
+					<script src="scripts/board.js"></script>
+
+					<div id="menu_bar">
+						<div class="button" onClick="intervalStart();">
+							<p>
+								Play
+							</p>
+						</div>
+
+						<div class="button" onClick="intervalEnd();">
+							<p>
+								Stop
+							</p>
+						</div>
+
+						<div class="button" onClick="step();">
+							<p>
+								Next Step
+							</p>
+						</div>
+
+						<input
+						    type="range"
+						    min="0"
+						    max="10"
+						    step="1"
+						    value="7"
+						    data-orientation="horizontal"
+						>
+
+						<div class="button" onClick="board(grid.length);">
+							<p>
+								Genocide
+							</p>
+						</div>
+
+						<div class="button" onClick="randomize();">
+							<p>
+								Random
+							</p>
+						</div>
+
+					</div>
+				</div>
+
+				<div id="side_window">
+
+					<h2>Change colors!</h2>
+
+					<ul>
+						<li>
+							<button id="cp-bg" class="button jscolor {valueElement:null,onFineChange:'setCanvasBackground(this, false)'}">
+								Background
+							</button>
+						</li>
+
+						<li>
+							<button id="cp-fill" class="button jscolor {valueElement:null,onFineChange:'setFillColor(this, false)'}">
+								Fill
+							</button>
+						</li>
+
+						<li>
+							<button id="cp-line" class="button jscolor {valueElement:null,onFineChange:'setOutlineColor(this, false)'}">
+								Outline
+							</button>
+						</li>
+
+						<li>
+							<button id="cp-hover" class="button jscolor {valueElement:null,onFineChange:'setHoverOutlineColor(this, false)'}">
+								Hover Outline
+							</button>
+						</li>
+					</ul>
+					<br/>
+
+					<h2>Or pick a theme!</h2>
+
+					<ul>
+						<li>
+							<button class="button" onClick="setMode('neon');">
+								Neon
+							</button>
+
+							<button class="button" onClick="setMode('drawer');">
+								Drawer
+							</button>
+
+							<button class="button" onClick="setMode('eraser');">
+								Eraser
+							</button>
+
+							<button class="button" onClick="setMode('dark');">
+								Dark
+							</button>
+
+							<button class="button" onClick="setMode('rainbow');">
+								Rainbow Mode!
+							</button>
+
+							<button class="button" onClick="setMode('');">
+								Default
+							</button>
+						</li>
+
+					</ul>
+					<br/>
+
+					<h2>Pick a size!</h2>
+
+						<select id="dropdown">
+							<option value="10">10x10</option>
+							<option value="25" selected="selected">25x25</option>
+							<option value="50">50x50</option>
+							<option value="100">100x100</option>
+							<option value="200">200x200</option>
+							<option value="300">300x300</option>
+							<option value="350">350x350</option>
+							<option value="400">400x400</option>
+							<option value="450">450x450</option>
+							<option value="750">750x750 - it may take a bit  of time</option>
+							<option value="1000">1000x1000 - it may take a bit  of time</option>
+
+							
+						</select>
+						<br/>
+
+						<ul>
+							<li>
+								<button class="button" onClick="updateSize()">
+									Change size
+
+
+								</button>
+							</li>
+						</ul>
+
+						
+
+						
+				</div>
+
+			</div>
+
+			
+			
+			
+
+		</div>
+
+	</body>
+</html>
